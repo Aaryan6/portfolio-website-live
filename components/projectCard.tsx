@@ -1,15 +1,10 @@
 "use client";
 
 import { urlForImage } from "@/sanity/lib/image";
-import { Project } from "@/sanity/schemas/project";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface ProjectCardProps {
-  proj: Project;
-}
-
-export default function ProjectCard({ proj }: ProjectCardProps) {
+export default function ProjectCard({ proj }: any) {
   const router = useRouter();
   const handleRoute = () => {
     router.push("/projects/" + proj.slug.current);

@@ -1,10 +1,10 @@
 "use client";
-
 import { urlForImage } from "@/sanity/lib/image";
+import { Project } from "@/sanity/schemas/project";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function ProjectCard({ proj }: any) {
+export default function ProjectCard({ proj }: { proj: Project }) {
   const router = useRouter();
   const handleRoute = () => {
     router.push("/projects/" + proj.slug.current);
@@ -30,7 +30,7 @@ export default function ProjectCard({ proj }: any) {
             proj.tag === "top" ? "leading-loose mt-4" : "leading-normal mt-3"
           }`}
         >
-          {proj.details}
+          {proj.description}
         </p>
       </div>
       {proj.tag === "top" && <button className="mt-5">Read more -&gt;</button>}

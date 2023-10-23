@@ -1,9 +1,10 @@
 import { urlForImage } from "@/sanity/lib/image";
+import { Posts } from "@/sanity/schemas/post";
 import moment from "moment";
-import Image from "next/image";
+
 import Link from "next/link";
 
-export default function BlogCard({ blog }: any) {
+export default function BlogCard({ blog }: { blog: Posts }) {
   const formatDate = (d: Date) => {
     const date = moment(new Date(d).toISOString()).format("MMMM Do YYYY");
     return date.toString();

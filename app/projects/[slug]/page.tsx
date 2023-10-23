@@ -43,7 +43,7 @@ export default async function page({ params }: { params: { slug: string } }) {
               src={urlForImage(project.thumbnail).url() || ""}
               alt=""
               fill
-              className="object-cover w-full h-full max-h-96 object-top border rounded-md"
+              className="object-cover w-full h-full object-top border rounded-md"
             />
           </div>
           <div className="text-black">

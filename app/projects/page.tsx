@@ -15,12 +15,12 @@ export default async function ProjectsPage() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-4">
-        {topProject.map((proj: any) => (
-          <ProjectCard key={proj._id} proj={proj} />
+        {topProject.map((proj: any, i: number) => (
+          <ProjectCard key={i} proj={proj} />
         ))}
         <div className="grid grid-cols-1 md:grid-cols-3 md:col-span-3 gap-6">
           {normalProject.map((proj: any, i) => (
-            <ProjectCard key={proj._id} proj={proj} />
+            <ProjectCard key={i} proj={proj} />
           ))}
         </div>
       </div>

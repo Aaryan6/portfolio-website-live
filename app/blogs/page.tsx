@@ -22,7 +22,7 @@ export default async function page() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {groups.map((subgroup, i) => (
           <div key={i} className="flex flex-col gap-4">
-            {subgroup.map((blog: Posts, i) => (
+            {subgroup.map((blog: any, i) => (
               <BlogCard key={i} blog={blog} />
             ))}
           </div>

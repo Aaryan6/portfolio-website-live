@@ -27,9 +27,6 @@ export default async function page() {
         ) : (
           groups.map((subgroup, i) => (
             <div key={i} className="flex flex-col gap-4">
-              <span className="text-center col-span-3 font-semibold text-gray-600">
-                Blogs to hai, pr dikh nahi rahe
-              </span>
               {subgroup.map((blog: Posts) => (
                 <BlogCard key={blog._id} blog={blog} />
               ))}

@@ -20,13 +20,19 @@ export default async function page() {
         </h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {groups.map((subgroup, i) => (
-          <div key={i} className="flex flex-col gap-4">
-            {subgroup.map((blog: Posts) => (
-              <BlogCard key={blog._id} blog={blog} />
-            ))}
-          </div>
-        ))}
+        {groups.length <= 0 ? (
+          <span className="text-center col-span-3 font-semibold text-gray-600">
+            No blogs yet!
+          </span>
+        ) : (
+          groups.map((subgroup, i) => (
+            <div key={i} className="flex flex-col gap-4">
+              {subgroup.map((blog: Posts) => (
+                <BlogCard key={blog._id} blog={blog} />
+              ))}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

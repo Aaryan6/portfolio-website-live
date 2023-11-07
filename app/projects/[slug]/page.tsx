@@ -39,7 +39,7 @@ export default async function page({ params }: { params: { slug: string } }) {
         <div className="max-w-3xl mx-auto">
           <div className="relative w-full max-h-96 aspect-video my-4">
             <Image
-              src={urlForImage(project.thumbnail).url() || ""}
+              src={(await urlForImage(project.thumbnail)).url() || ""}
               alt=""
               fill
               className="object-cover w-full h-full object-top border rounded-md"

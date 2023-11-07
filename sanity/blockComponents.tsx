@@ -37,10 +37,10 @@ export const components: PortableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }) => (
+    image: async ({ value }) => (
       <div className="w-full h-auto aspect-[5/3] relative my-10">
         <Image
-          src={urlForImage(value)?.url()}
+          src={(await urlForImage(value))?.url()}
           alt=""
           fill
           className="object-cover object-center rounded-md"
@@ -50,7 +50,11 @@ export const components: PortableTextComponents = {
   },
   marks: {
     link: ({ children, value }) => (
-      <Link href={value?.href} className="underline decoration-white">
+      <Link
+        href={value?.href}
+        target="_blank"
+        className="underline decoration-white"
+      >
         {children}
       </Link>
     ),
@@ -99,10 +103,10 @@ export const projectComponents: PortableTextComponents = {
     ),
   },
   types: {
-    image: ({ value }) => (
+    image: async ({ value }) => (
       <div className="w-full h-auto aspect-[5/3] relative my-10">
         <Image
-          src={urlForImage(value)?.url()}
+          src={(await urlForImage(value))?.url()}
           alt=""
           fill
           className="object-cover object-center rounded-md"
@@ -112,7 +116,11 @@ export const projectComponents: PortableTextComponents = {
   },
   marks: {
     link: ({ children, value }) => (
-      <Link href={value?.href} className="underline decoration-black">
+      <Link
+        href={value?.href}
+        target="_blank"
+        className="underline decoration-black"
+      >
         {children}
       </Link>
     ),

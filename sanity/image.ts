@@ -6,6 +6,6 @@ const imageBuilder = createImageUrlBuilder({
   dataset: process.env.DATASET || "",
 });
 
-export const urlForImage = (source: Image) => {
+export const urlForImage = async (source: Image) => {
   return imageBuilder?.image(source).auto("format").fit("max");
 };

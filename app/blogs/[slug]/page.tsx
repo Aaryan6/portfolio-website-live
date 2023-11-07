@@ -1,10 +1,10 @@
+import { components } from "@/sanity/blockComponents";
 import { singlePost } from "@/sanity/sanity.query";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
-import { urlForImage } from "@/sanity/image";
-import { components } from "@/sanity/blockComponents";
-import formatDate from "@/util/dateFormat";
 import { Posts } from "@/sanity/types";
+import { urlForImage } from "@/sanity/image";
+import formatDate from "@/util/dateFormat";
+import Image from "next/image";
 
 export default async function BlogPage({
   params,
@@ -23,7 +23,7 @@ export default async function BlogPage({
       </div>
       <div className="w-full aspect-[16/9] my-4 relative">
         <Image
-          src={urlForImage(blog.mainImage).url()}
+          src={(await urlForImage(blog.mainImage)).url()}
           alt="image"
           fill
           className="h-full w-full object-center object-cover rounded-md"

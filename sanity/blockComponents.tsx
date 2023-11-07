@@ -6,22 +6,22 @@ import Link from "next/link";
 export const components: PortableTextComponents = {
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl md:text-4xl font-semibold my-2 leading-relaxed">
+      <h1 className="text-3xl md:text-4xl font-semibold my-4 leading-relaxed">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl md:text-3xl font-semibold my-2 leading-relaxed">
+      <h2 className="text-2xl md:text-3xl font-semibold my-4 leading-relaxed">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl md:text-2xl font-semibold my-2 leading-relaxed">
+      <h3 className="text-xl md:text-2xl font-semibold my-4 leading-relaxed">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg md:text-xl font-semibold my-2 leading-relaxed">
+      <h4 className="text-lg md:text-xl font-semibold my-4 leading-relaxed">
         {children}
       </h4>
     ),
@@ -38,12 +38,13 @@ export const components: PortableTextComponents = {
   },
   types: {
     image: async ({ value }) => (
-      <div className="w-full h-auto aspect-[5/3] relative my-10">
+      <div className="w-full h-auto aspect-[5/3] relative py-5">
         <Image
           src={(await urlForImage(value))?.url()}
-          alt=""
-          fill
-          className="object-cover object-center rounded-md"
+          alt="image"
+          width={1000}
+          height={900}
+          className="object-cover object-center rounded-md w-full h-full"
         />
       </div>
     ),

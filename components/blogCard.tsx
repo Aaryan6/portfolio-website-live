@@ -1,6 +1,6 @@
 "use client";
-import { urlForImage } from "@/sanity/lib/image";
-import { Posts } from "@/sanity/schemas/post";
+import { urlForImage } from "@/sanity/image";
+import { Posts } from "@/sanity/types";
 import moment from "moment";
 import Image from "next/image";
 

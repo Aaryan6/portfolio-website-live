@@ -1,7 +1,7 @@
-import { projectComponents } from "@/sanity/lib/blockComponents";
-import { urlForImage } from "@/sanity/lib/image";
+import { projectComponents } from "@/sanity/blockComponents";
+import { urlForImage } from "@/sanity/image";
 import { singleProject } from "@/sanity/sanity.query";
-import { Project } from "@/sanity/schemas/project";
+import { Project } from "@/sanity/types";
 import formatDate from "@/util/dateFormat";
 import { PortableText } from "@portabletext/react";
 import { MoveRight } from "lucide-react";
@@ -10,7 +10,6 @@ import Link from "next/link";
 
 export default async function page({ params }: { params: { slug: string } }) {
   const project: Project = await singleProject(params.slug);
-  console.log(project);
   return (
     <div className="">
       <div className="text-center w-full py-12 pt-6 md:pt-12  max-w-2xl mx-auto px-3">

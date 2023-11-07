@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/projectCard";
 import { getProjects } from "@/sanity/sanity.query";
-import { Project } from "@/sanity/schemas/project";
+import { Project } from "@/sanity/types";
 
 export default async function ProjectsPage() {
   const projects: Project[] = await getProjects();

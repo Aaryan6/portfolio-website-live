@@ -1,9 +1,9 @@
 import BlogCard from "@/components/blogCard";
-import { getBlogs } from "@/sanity/sanity.query";
-import { Posts } from "@/sanity/schemas/post";
+import { getPosts } from "@/sanity/sanity.query";
+import { Posts } from "@/sanity/types";
 
 export default async function page() {
-  const blogs: Posts[] = await getBlogs();
+  const blogs: Posts[] = await getPosts();
 
   const groupSize = Math.ceil(blogs.length / 5);
   const groups = [

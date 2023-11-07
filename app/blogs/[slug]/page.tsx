@@ -1,10 +1,10 @@
 import { singlePost } from "@/sanity/sanity.query";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import { urlForImage } from "@/sanity/lib/image";
-import { components } from "@/sanity/lib/blockComponents";
+import { urlForImage } from "@/sanity/image";
+import { components } from "@/sanity/blockComponents";
 import formatDate from "@/util/dateFormat";
-import { Posts } from "@/sanity/schemas/post";
+import { Posts } from "@/sanity/types";
 
 export default async function BlogPage({
   params,

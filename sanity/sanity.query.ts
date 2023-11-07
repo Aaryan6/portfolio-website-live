@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
-import { client } from "./lib/client";
+import { client } from "../sanity/client";
 
-export async function getBlogs() {
+export async function getPosts() {
   return client.fetch(
     groq`*[_type == "post"]{
         _id,

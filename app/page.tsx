@@ -26,7 +26,7 @@ export default function Home() {
         <h1
           className={`${gbfont.className} text-5xl md:text-8xl text-gray-100 font-semibold`}
         >
-          Aaryan Patel
+          Abhishek Patel
         </h1>
         <p className={`${gbfont.className} mt-6 text-gray-400`}>
           Hi I&apos;m a full stack developer & a freelancer. Passionate to build

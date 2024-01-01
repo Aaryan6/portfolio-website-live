@@ -5,15 +5,8 @@ export default function Navbar() {
   return (
     <header className="p-10 px-2 flex flex-col md:flex-row justify-between w-full items-center max-w-7xl mx-auto">
       <div className="pb-2 md:pb-0">
-        <Link href="/">
-          <Image
-            src={"/logo.png"}
-            alt="Aaryan"
-            width={808}
-            height={378}
-            className="h-12 w-auto"
-            priority
-          />
+        <Link href="/" className="text-xl font-semibold">
+          Abhishek
         </Link>
       </div>
       <div className="flex gap-x-1 md:gap-x-3 w-full max-w-xl justify-between items-center">

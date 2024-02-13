@@ -3,7 +3,7 @@ import { Project } from "@/sanity/types";
 import axios from "axios";
 
 const getProjects = async () => {
-  const fetchUrl = "/api/projects";
+  const fetchUrl = "https://developeraaryan.vercel.app/api/projects";
   try {
     const res = await axios.get(fetchUrl);
 

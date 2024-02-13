@@ -1,42 +1,38 @@
-import { urlForImage } from "@/sanity/image";
 import { Project } from "@/sanity/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ProjectCard({ proj }: { proj: Project }) {
-  const getUrl = async (url: any) => {
-    const icon = url && (await urlForImage(url)).url();
-    return icon;
-  };
-
+export default async function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
-      href={`/projects/${proj.slug.current}`}
+      href={`/projects/${project.slug}`}
       className="border border-gray-800 bg-[#0c1119] rounded-md p-8 grid place-content-between place-items-start cursor-pointer hover:scale-105 duration-300"
     >
       <div className={``}>
         <div className="grid">
           <div className="flex gap-x-3">
             <Image
-              src={(await getUrl(proj.icon)) ?? "/vercel.jpg"}
+              src={project.icon ?? "/vercel.jpg"}
               alt="logo"
               width={30}
               height={30}
               className="object-contain rounded-full bg-center"
             />
             <h1 className="text-xl font-semibold text-gray-100">
-              {proj.title}
+              {project.title}
             </h1>
           </div>
           <p
             className={`text-gray-400 ${
-              proj.tag === "top" ? "leading-loose mt-4" : "leading-normal mt-3"
+              project.priority === "high"
+                ? "leading-loose mt-4"
+                : "leading-normal mt-3"
             }`}
           >
-            {proj.description}
+            {project.description}
           </p>
         </div>
-        {proj.tag === "top" && (
+        {project.priority === "high" && (
           <button className="mt-5">Read more -&gt;</button>
         )}
       </div>

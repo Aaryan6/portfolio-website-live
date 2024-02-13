@@ -1,8 +1,20 @@
+"use client";
+import axios from "axios";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function About() {
+  useEffect(() => {
+    const fetchData = async () => {
+      const notion_data = await axios.get(
+        "http://localhost:3000/app/api/notion"
+      );
+
+      console.log(notion_data.data);
+    };
+  }, []);
   return (
     <div className="max-w-4xl w-full mx-auto py-10 pb-20 px-10 flex flex-col md:flex-row gap-x-6">
       <div className="">

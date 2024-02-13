@@ -1,14 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import { Pixelify_Sans, Gabarito } from "next/font/google";
-import Navbar from "../components/Navbar";
+import { Gabarito } from "next/font/google";
 import Particles from "@/components/particles";
-
-const pxfont = Pixelify_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 const gbfont = Gabarito({
   subsets: ["latin"],

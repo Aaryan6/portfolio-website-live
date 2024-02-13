@@ -1,7 +1,7 @@
 import moment from "moment";
 
-export default function formatDate(d?: Date) {
+export default function formatDate(d?: string) {
   if (!d) return "";
-  const date = moment(new Date(d).toISOString()).format("D MMMM YYYY");
+  const date = moment(d).format("D MMMM YYYY");
   return date.toString();
 }

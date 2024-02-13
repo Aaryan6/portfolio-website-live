@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const getProject = async (slug: string) => {
-  const fetchUrl = "/api/projects";
+  const fetchUrl = "https://developeraaryan.vercel.app/api/projects";
   try {
     const { data } = await axios.post(fetchUrl, {
       slug,

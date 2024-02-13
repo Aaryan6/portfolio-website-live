@@ -9,16 +9,8 @@ const notion = new Client({
 });
 
 export async function GET(req: Request) {
-  if (!DATABASE_KEY || !NOTION_SECRET) {
-    return NextResponse.json(
-      {
-        error: "Notion secret or database key not found",
-      },
-      {
-        status: 404,
-      }
-    );
-  }
+  if (!DATABASE_KEY || !NOTION_SECRET)
+    throw new Error("Notion secret or database key not found");
 
   const query = await notion.databases.query({
     database_id: DATABASE_KEY!,
@@ -34,26 +26,18 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { slug } = body;
 
-  if (!DATABASE_KEY || !NOTION_SECRET) {
-    return NextResponse.json(
-      {
-        error: "Notion secret or database key not found",
-      },
-      {
-        status: 404,
-      }
-    );
-  }
+  if (!DATABASE_KEY || !NOTION_SECRET)
+    throw new Error("Notion secret or database key not found");
 
   const query = await notion.databases.query({
     database_id: DATABASE_KEY!,
   });
 
   //   @ts-ignore
-  const data = query.results.map((page) => page.properties);
-  const project = data.find(
+  const res = query.results.map((page) => page.properties);
+  const data = res.find(
     (project: any) => project.slug?.rich_text[0]?.text.content === slug
   );
 
-  return new NextResponse(JSON.stringify(project));
+  return new NextResponse(JSON.stringify(data));
 }

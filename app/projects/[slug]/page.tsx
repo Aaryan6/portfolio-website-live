@@ -33,6 +33,7 @@ export default async function page({
   params: { slug: string };
 }) {
   const project = await getProject(slug);
+  if (!project) return;
   return (
     <div className="">
       <div className="text-center w-full py-12 pt-6 md:pt-12  max-w-2xl mx-auto px-3">

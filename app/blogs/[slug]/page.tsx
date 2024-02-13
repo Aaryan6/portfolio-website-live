@@ -3,7 +3,6 @@ import { singlePost } from "@/sanity/sanity.query";
 import { PortableText } from "@portabletext/react";
 import { Posts } from "@/sanity/types";
 import { urlForImage } from "@/sanity/image";
-import formatDate from "@/util/dateFormat";
 import Image from "next/image";
 
 export default async function BlogPage({

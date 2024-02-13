@@ -3,7 +3,7 @@ import { Project } from "@/sanity/types";
 import axios from "axios";
 
 const getProjects = async () => {
-  const fetchUrl = process.env.NEXT_PUBLIC_SITE_URL + "/api/projects";
+  const fetchUrl = "/api/projects";
   try {
     const res = await axios.get(fetchUrl);
 

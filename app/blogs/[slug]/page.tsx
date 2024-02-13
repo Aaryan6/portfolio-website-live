@@ -16,9 +16,6 @@ export default async function BlogPage({
     <div className="max-w-3xl w-full mx-auto md:py-10 pb-20 px-5">
       <div className="bg-gradient-to-b from-[#172943] to-transparent absolute top-0 left-0 w-full h-96 -z-10"></div>
       <div className="py-5">
-        <p className="text-gray-200 font-medium mb-2">
-          {formatDate(blog?.publishedAt)}
-        </p>
         <h1 className="text-3xl md:text-4xl font-bold">{blog?.title}</h1>
       </div>
       <div className="w-full aspect-[16/9] my-4 relative">

@@ -1,5 +1,8 @@
+"use client";
 import { Gabarito } from "next/font/google";
 import Particles from "@/components/particles";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const gbfont = Gabarito({
   subsets: ["latin"],
@@ -7,6 +10,19 @@ const gbfont = Gabarito({
 });
 
 export default function Home() {
+  const [tagline, setTagline] = useState("");
+
+  useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch("/api/content", {
+        method: "GET",
+      });
+      const data = await res.json();
+      setTagline(data?.tagline);
+    };
+    fetcher();
+  }, []);
+
   return (
     <main className="flex flex-col items-center p-6 md:p-12">
       <Particles
@@ -20,8 +36,9 @@ export default function Home() {
           Aaryan Patel
         </h1>
         <p className={`${gbfont.className} mt-6 text-gray-400`}>
-          Hi I&apos;m a full stack developer & a freelancer. Passionate to build
-          crazy things.
+          {tagline
+            ? tagline
+            : "Hi I'm a full stack developer & a freelancer. Passionate to build crazy things."}
         </p>
       </div>
     </main>

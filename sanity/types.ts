@@ -43,5 +43,5 @@ export type Project = {
   }[];
   slug?: string;
   release_date?: string;
-  list?: number;
+  rank?: number;
 };

@@ -1,3 +1,4 @@
+import { getProjectBySlug } from "@/app/actions";
 import { Project } from "@/sanity/types";
 import formatDate from "@/util/dateFormat";
 import axios from "axios";
@@ -5,37 +6,15 @@ import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const getProject = async (slug: string) => {
-  const fetchUrl = "https://developeraaryan.vercel.app/api/projects";
-  try {
-    const { data } = await axios.post(fetchUrl, {
-      slug,
-    });
-
-    const project: Project = {
-      title: data.title.title[0]?.text.content,
-      description: data.description?.rich_text[0]?.text.content,
-      web_url: data.web_url?.url,
-      github_url: data.github_url?.url,
-      details: data.details.rich_text,
-      thumbnail: data.thumbnail.files[0]?.file.url,
-      release_date: data.release_date?.date.start,
-    };
-    return project;
-  } catch (error: any) {
-    console.log(error);
-  }
-};
-
 export default async function page({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  const project = await getProject(slug);
+  const project = await getProjectBySlug(slug);
   if (!project) return;
   return (
-    <div className="">
+    <div className="h-[calc(100vh-8rem)] flex flex-col">
       <div className="text-center w-full py-12 pt-6 md:pt-12  max-w-2xl mx-auto px-3">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-100">
           {project!.title}
@@ -67,7 +46,7 @@ export default async function page({
           )}
         </div>
       </div>
-      <div className="bg-white px-5 pt-10 py-20">
+      <div className="bg-white px-5 pt-10 py-20 flex-1">
         <div className="max-w-3xl mx-auto">
           {project?.thumbnail && (
             <div className="relative w-full max-h-96 aspect-video my-4">

@@ -6,7 +6,7 @@ export default async function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="border border-gray-800 bg-[#0c1119] rounded-md p-8 grid place-content-between place-items-start cursor-pointer hover:scale-105 duration-300"
+      className="border border-gray-700 bg-gray-800 rounded-md p-8 grid place-content-between place-items-start cursor-pointer hover:scale-105 duration-300"
     >
       <div className={``}>
         <div className="grid">

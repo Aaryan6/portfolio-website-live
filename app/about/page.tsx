@@ -3,17 +3,20 @@ import axios from "axios";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function About() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const notion_data = await axios.get(
-        "http://localhost:3000/app/api/notion"
-      );
+  const [bio, setBio] = useState("");
 
-      console.log(notion_data.data);
+  useEffect(() => {
+    const fetcher = async () => {
+      const res = await fetch("/api/content", {
+        method: "GET",
+      });
+      const data = await res.json();
+      setBio(data?.bio);
     };
+    fetcher();
   }, []);
   return (
     <div className="max-w-4xl w-full mx-auto py-10 pb-20 px-10 flex flex-col md:flex-row gap-x-6">
@@ -31,16 +34,10 @@ export default function About() {
           Aaryan Patel
         </h1>
         <h4 className="text-gray-300 font-medium">Full Stack Developer</h4>
-        <p className="mt-5 text-gray-300 leading-relaxed">
-          Hi, I&apos;m Aaryan, I called myself a self made full stack developer
-          because I learn development by building things. My coding journey
-          begins in 11th grade, Started with Html & CSS then tried different
-          tech stack, JavaScript, Python, Flask, Django, React, Mern, React
-          native & Nextjs.
-        </p>
-        <p className="mt-5 text-gray-300 leading-relaxed">
-          Currently I am an intern as a NextJs developer, recently started
-          freelancing, and Building cool things in side!
+        <p className="mt-5 text-gray-300 leading-relaxed whitespace-pre-wrap">
+          {bio
+            ? bio
+            : "Hi, I'm Aaryan, I call myself a self-made full-stack developer because I learn development by building things. My coding journey began in 11th grade, Started with HTML & CSS then tried different tech stacks, JavaScript, Python, Flask, Django, React, Mern, React native & Nextjs.\n\nCurrently, I am an intern as a NextJs developer, and recently started freelancing, and Building cool things as a side project!"}
         </p>
 
         {/* social media icons */}

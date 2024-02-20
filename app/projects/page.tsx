@@ -1,37 +1,17 @@
 import ProjectCard from "@/components/projectCard";
 import { Project } from "@/sanity/types";
-import axios from "axios";
-
-const getProjects = async () => {
-  const fetchUrl = "https://developeraaryan.vercel.app/api/projects";
-  try {
-    const res = await axios.get(fetchUrl);
-
-    const projects: Project[] = res.data.map((data: any) => {
-      return {
-        title: data.title.title[0]?.text.content,
-        description: data.description?.rich_text[0]?.text.content,
-        icon: data.icon.files[0]?.file.url,
-        priority: data.priority?.select.name,
-        slug: data.slug?.rich_text[0]?.text.content,
-        list: data.list?.number,
-      };
-    });
-    return projects;
-  } catch (error: any) {
-    console.log(error);
-  }
-};
+import { getProjects } from "../actions";
 
 export default async function ProjectsPage() {
   const data = await getProjects();
   if (!data) return;
   const projects: Project[] = data;
   if (!projects) return;
+
   const topProject = projects.filter((pro) => pro.priority === "high");
   const normalProject = projects
     .filter((pro) => pro.priority === "low")
-    ?.sort((a, b) => a.list! - b.list!);
+    ?.sort((a, b) => a.rank! - b.rank!);
 
   return (
     <div className="max-w-7xl w-full mx-auto py-2 pb-20 px-5">

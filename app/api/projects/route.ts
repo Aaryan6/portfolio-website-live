@@ -18,7 +18,6 @@ export async function GET(req: Request) {
 
   //   @ts-ignore
   const data = query.results.map((page) => page.properties);
-  console.log(data);
   return new NextResponse(JSON.stringify(data));
 }
 

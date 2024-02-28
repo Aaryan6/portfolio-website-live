@@ -6,13 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "print:env": "tsx -r dotenv/config ./runit.ts"
+    "lint": "next lint"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.14",
-    "@portabletext/react": "^3.0.11",
-    "@sanity/image-url": "^1.0.2",
     "@vercel/analytics": "^1.1.1",
     "axios": "^1.6.7",
     "dotenv": "^16.3.1",
@@ -20,10 +17,8 @@
     "lucide-react": "^0.288.0",
     "moment": "^2.29.4",
     "next": "14.1.0",
-    "next-sanity": "^6.0.1",
     "react": "^18",
     "react-dom": "^18",
-    "sanity": "^3.19.1",
     "styled-components": "5.2"
   },
   "devDependencies": {

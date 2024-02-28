@@ -1,4 +1,4 @@
-import { Project } from "@/sanity/types";
+import { Project } from "@/util/types";
 import axios from "axios";
 
 const fetchUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`;

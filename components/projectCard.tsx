@@ -1,4 +1,4 @@
-import { Project } from "@/sanity/types";
+import { Project } from "@/util/types";
 import Image from "next/image";
 import Link from "next/link";
 

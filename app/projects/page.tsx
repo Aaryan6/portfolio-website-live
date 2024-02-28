@@ -1,6 +1,6 @@
 import ProjectCard from "@/components/projectCard";
-import { Project } from "@/sanity/types";
 import { getProjects } from "../actions";
+import { Project } from "@/util/types";
 
 export default async function ProjectsPage() {
   const data = await getProjects();

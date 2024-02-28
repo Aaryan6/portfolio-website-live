@@ -24,22 +24,18 @@ export async function getProjects() {
 }
 
 export async function getProjectBySlug(slug: string) {
-  try {
-    const { data } = await axios.post(fetchUrl, {
-      slug,
-    });
+  const { data } = await axios.post(fetchUrl, {
+    slug,
+  });
 
-    const project: Project = {
-      title: data.title.title[0]?.text.content,
-      description: data.description?.rich_text[0]?.text.content,
-      web_url: data.web_url?.url,
-      github_url: data.github_url?.url,
-      details: data.details.rich_text,
-      thumbnail: data.thumbnail.files[0]?.file.url,
-      release_date: data.release_date?.date?.start,
-    };
-    return project;
-  } catch (error: any) {
-    console.log(error);
-  }
+  const project: Project = {
+    title: data.title.title[0]?.text.content,
+    description: data.description?.rich_text[0]?.text.content,
+    web_url: data.web_url?.url,
+    github_url: data.github_url?.url,
+    details: data.details.rich_text,
+    thumbnail: data.thumbnail.files[0]?.file.url,
+    release_date: data.release_date?.date?.start,
+  };
+  return project;
 }

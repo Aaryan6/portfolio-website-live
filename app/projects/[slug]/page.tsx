@@ -1,7 +1,6 @@
 import { getProjectBySlug } from "@/app/actions";
-import { Project } from "@/sanity/types";
 import formatDate from "@/util/dateFormat";
-import axios from "axios";
+import { Project } from "@/util/types";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,19 +10,19 @@ export default async function page({
 }: {
   params: { slug: string };
 }) {
-  const project = await getProjectBySlug(slug);
+  const project: Project = await getProjectBySlug(slug);
   if (!project) return;
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col">
       <div className="text-center w-full py-12 pt-6 md:pt-12  max-w-2xl mx-auto px-3">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-100">
-          {project!.title}
+          {project.title}
         </h1>
         <h4 className="text-gray-300 text-sm md:text-base font-medium mt-2">
-          {formatDate(project!.release_date)}
+          {formatDate(project.release_date)}
         </h4>
         <p className="mt-4 text-base md:text-lg text-gray-300">
-          {project!.description}
+          {project.description}
         </p>
         <div className="flex items-center gap-x-4 mt-10 max-w-[14rem] md:max-w-xs mx-auto">
           {project && project.web_url && (

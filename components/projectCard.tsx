@@ -1,6 +1,7 @@
 import { Project } from "@/util/types";
 import Image from "next/image";
 import Link from "next/link";
+import WebsiteLogo from "@/public/website-logo.svg";
 
 export default async function ProjectCard({ project }: { project: Project }) {
   return (
@@ -12,11 +13,11 @@ export default async function ProjectCard({ project }: { project: Project }) {
         <div className="grid">
           <div className="flex gap-x-3">
             <Image
-              src={project.icon ?? "/vercel.jpg"}
+              src={project.icon ?? WebsiteLogo}
               alt="logo"
               width={30}
               height={30}
-              className="object-contain rounded-full bg-center"
+              className="object-contain rounded-full bg-center bg-white"
             />
             <h1 className="text-xl font-semibold text-gray-100">
               {project.title}

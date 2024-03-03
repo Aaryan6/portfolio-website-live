@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     "Hi, I'm a full stack developer & a freelancer. Passionate to build crazy things.",
 };
 
+export const revalidate = 3600;
+
 export default function RootLayout({
   children,
 }: {

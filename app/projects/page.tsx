@@ -21,15 +21,15 @@ export default async function ProjectsPage() {
           Some of the projects are from work and some are on my own time.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 mb-6">
         {topProject?.map((item: Project, i: number) => (
           <ProjectCard key={i} project={item} />
         ))}
-        <div className="grid grid-cols-1 md:grid-cols-3 md:col-span-3 gap-6">
-          {normalProject?.map((item: Project, i: number) => (
-            <ProjectCard key={i} project={item} />
-          ))}
-        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 md:col-span-3 gap-6">
+        {normalProject?.map((item: Project, i: number) => (
+          <ProjectCard key={i} project={item} />
+        ))}
       </div>
     </div>
   );

@@ -1,23 +1,9 @@
-"use client";
-import axios from "axios";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { getBio } from "../actions";
 
-export default function About() {
-  const [bio, setBio] = useState("");
-
-  useEffect(() => {
-    const fetcher = async () => {
-      const res = await fetch("/api/content", {
-        method: "GET",
-      });
-      const data = await res.json();
-      setBio(data?.bio);
-    };
-    fetcher();
-  }, []);
+export default async function About() {
+  const bio = await getBio();
   return (
     <div className="max-w-4xl w-full mx-auto py-10 pb-20 px-10 flex flex-col md:flex-row gap-x-6">
       <div className="">
@@ -35,9 +21,7 @@ export default function About() {
         </h1>
         <h4 className="text-gray-300 font-medium">Full Stack Developer</h4>
         <p className="mt-5 text-gray-300 leading-relaxed whitespace-pre-wrap">
-          {bio
-            ? bio
-            : "Hi, I'm Aaryan, I call myself a self-made full-stack developer because I learn development by building things. My coding journey began in 11th grade, Started with HTML & CSS then tried different tech stacks, JavaScript, Python, Flask, Django, React, Mern, React native & Nextjs.\n\nCurrently, I am an intern as a NextJs developer, and recently started freelancing, and Building cool things as a side project!"}
+          {bio}
         </p>
 
         {/* social media icons */}

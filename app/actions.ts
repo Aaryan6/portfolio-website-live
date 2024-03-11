@@ -1,11 +1,10 @@
+import { getURL } from "@/util/helpers";
 import { Project } from "@/util/types";
 import axios from "axios";
 
-const fetchUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`;
-
 export async function getProjects() {
   try {
-    const res = await axios.get(fetchUrl);
+    const res = await axios.get(`${getURL()}/api/projects`);
 
     const projects: Project[] = res?.data?.map((data: any) => {
       return {
@@ -24,7 +23,7 @@ export async function getProjects() {
 }
 
 export async function getProjectBySlug(slug: string) {
-  const { data } = await axios.post(fetchUrl, {
+  const { data } = await axios.post(`${getURL()}/api/projects`, {
     slug,
   });
 
@@ -38,4 +37,14 @@ export async function getProjectBySlug(slug: string) {
     release_date: data.release_date?.date?.start,
   };
   return project;
+}
+
+export async function getBio() {
+  const { data } = await axios.get(`${getURL()}/api/content`);
+  return data?.bio;
+}
+
+export async function getTagline() {
+  const { data } = await axios.get(`${getURL()}/api/content`);
+  return data?.tagline;
 }

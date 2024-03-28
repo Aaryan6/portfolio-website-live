@@ -7,16 +7,21 @@ export default async function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="border border-gray-700 rounded-md p-8 grid place-content-between place-items-start cursor-pointer hover:scale-105 duration-300 w-full"
+      className="border border-gray-800 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 hover:from-gray-900 hover:to-gray-900 hover:via-gray-950 duration-500 transition-all rounded-md p-8 grid place-content-between place-items-start cursor-pointer hover:scale-105 w-full"
     >
-      <div className="grid">
+      <div className="grid space-y-4">
+        {project.priority === "intern" && (
+          <h3 className="bg-gray-800 text-gray-300 font-medium border border-gray-600 px-4 py-1 rounded-full w-fit text-sm">
+            Internship
+          </h3>
+        )}
         <div className="flex gap-x-3">
           <Image
             src={project.icon ?? WebsiteLogo}
             alt="logo"
             width={30}
             height={30}
-            className="object-contain rounded-full bg-center bg-white"
+            className="object-contain rounded-full bg-center "
           />
           <h1 className="text-xl font-semibold text-gray-100">
             {project.title}
@@ -32,7 +37,7 @@ export default async function ProjectCard({ project }: { project: Project }) {
           {project.description}
         </p>
       </div>
-      {project.priority === "high" && (
+      {project.priority !== "low" && (
         <button className="mt-5">Read more -&gt;</button>
       )}
     </Link>

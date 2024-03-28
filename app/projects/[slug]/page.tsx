@@ -4,7 +4,6 @@ import { Project } from "@/util/types";
 import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ProfileImage from "@/public/profile.jpg";
 
 export default async function page({
   params: { slug },

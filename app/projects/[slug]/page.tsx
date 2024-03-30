@@ -47,7 +47,7 @@ export default async function page({
       </div>
       <div className="bg-white px-5 pt-10 py-20 flex-1">
         <div className="max-w-3xl mx-auto">
-          {project?.thumbnail && (
+          {project?.thumbnail ? (
             <div className="relative w-full max-h-96 aspect-video my-4">
               <Image
                 src={project.thumbnail || ""}
@@ -56,6 +56,16 @@ export default async function page({
                 className="object-cover w-full h-full object-top border rounded-md"
               />
             </div>
+          ) : (
+            <iframe
+              src={project.web_url}
+              allowFullScreen
+              width={"100%"}
+              height={"100%"}
+              className="w-full aspect-video scroll-none pointer-events-none mb-4 rounded-md"
+              title={project.title}
+              scrolling="no"
+            ></iframe>
           )}
           {project?.details &&
             project.details.map((item, i) => (

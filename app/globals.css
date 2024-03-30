@@ -6,3 +6,13 @@ body {
   color: #f1f1f1;
   background: #020a15;
 }
+
+.scroll-none::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+.scroll-none::-webkit-scrollbar-thumb {
+  display: none;
+  width: 0;
+}

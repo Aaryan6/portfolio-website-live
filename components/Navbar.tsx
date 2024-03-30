@@ -1,7 +1,18 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const router = useRouter();
+
+  const onClick = (path: string) => {
+    track("navigate", {
+      page: path,
+    });
+    router.push(path);
+  };
   return (
     <header className="h-[8rem] px-6 flex flex-col md:flex-row justify-between w-full items-center max-w-7xl mx-auto">
       <div className="pt-6 pb-2 md:pt-0 md:pb-0">
@@ -17,8 +28,8 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="flex gap-x-1 md:gap-x-3 w-full max-w-xs justify-between items-center">
-        <Link
-          href="/about"
+        <button
+          onClick={() => onClick("/about")}
           className="group rounded-lg border border-transparent px-3 md:px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`text-lg md:text-xl font-semibold`}>
@@ -27,10 +38,10 @@ export default function Navbar() {
               -&gt;
             </span>
           </h2>
-        </Link>
+        </button>
 
-        <Link
-          href="/projects"
+        <button
+          onClick={() => onClick("/projects")}
           className="group rounded-lg border border-transparent px-3 md:px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`text-lg md:text-xl font-semibold`}>
@@ -39,7 +50,7 @@ export default function Navbar() {
               -&gt;
             </span>
           </h2>
-        </Link>
+        </button>
       </div>
     </header>
   );
